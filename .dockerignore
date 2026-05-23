@@ -1,0 +1,38 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Data & Indices (Θα τα κάνουμε mount μέσω volumes)
+data/faiss_index/
+data/*.txt
+
+# Environments & Secrets
+.env
+.venv
+.vscode/
+
+# Git
+.git/
+.gitignore

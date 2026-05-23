@@ -1,0 +1,28 @@
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama_service
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+
+  legal-agent:
+    build: .
+    container_name: legal_agent_service
+    stdin_open: true
+    tty: true
+    depends_on:
+      - ollama
+    volumes:
+      - .:/app
+      - hf_cache:/root/.cache/huggingface
+    environment:
+      # Εδώ λέμε στον Agent να κοιτάξει το service "ollama" 
+      # αντί για το host.docker.internal
+      - OLLAMA_HOST=http://ollama:11434
+
+# ΠΡΕΠΕΙ ΝΑ ΠΡΟΣΘΕΣΕΙΣ ΑΥΤΟ ΣΤΟ ΤΕΛΟΣ:
+volumes:
+  ollama_data:
+  hf_cache:
